@@ -1,30 +1,23 @@
 from src.mask import get_mask_account, get_mask_card_number
 
-def mask_account_card():
-    """
-    Обрабатывает строку с типом и номером, возвращает маскированный номер.
 
-    :param info: str, например "Visa Platinum 7000792289606361"
-    :return: str, маскированный номер
+def mask_account_card(info):
     """
-    # Разделение строки по пробелам
+    Обрабатывает строку с типом и номером, возвращает строку с типом и маскированным номером.
+    """
     parts = info.strip().split()
-
-    # Проверка, что строка содержит минимум 2 части
     if len(parts) < 2:
         raise ValueError("Некорректный формат строки. Ожидается тип и номер.")
 
-    # Тип — все части, кроме последней (например, "Visa Platinum" или "Счет")
-    # Номер — последний элемент
-    *types, number = parts
-    type_str = " ".join(types)
+    number = parts[-1]
+    type_str = " ".join(parts[:-1])  # сохраняем оригинальный регистр для вывода
+    type_str_lower = type_str.lower()
 
-    # Обработка по типу
-    if type_str.lower() in ["счет", " счет"]:
-        # Маскируем счет
+    if "счет" in type_str_lower:
         masked_number = get_mask_account(number)
     else:
-        # Маскируем карту
-        masked_number = get_mask_card(number)
+        masked_number = get_mask_card_number(number)
 
-    return masked_number
+    return f"{type_str} {masked_number}"
+
+print(mask_account_card("Visa Platinum 7000792289606361"))
