@@ -13,9 +13,11 @@ def test_mask_account_card_card():
     assert mask_account_card("Visa Platinum 7000792289606361") == "Visa Platinum 7000 79** **** 6361"
 
 def test_mask_account_card_invalid_input():
-    """Тест на некорректный ввод."""
-    with pytest.raises(ValueError):
+    """Тест на некорректный ввод, вызывающий ValueError."""
+    with pytest.raises(ValueError) as excinfo:
         mask_account_card("Некорректный формат")
+    assert str(excinfo.value) == "Некорректный формат строки. Ожидается тип и номер."
+
 
 def test_get_date():
     """Тест преобразования даты."""
