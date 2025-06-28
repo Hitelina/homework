@@ -22,9 +22,6 @@ def mask_account_card(info: str) -> str:
     return f"{type_str} {masked_number}"
 
 
-print(mask_account_card("Visa Platinum 7000792289606361"))
-
-
 def get_date(date_str: str) -> str:
     """
     Принимает строку с датой в формате ISO 8601 и возвращает строку в формате ДД.ММ.ГГГГ.
