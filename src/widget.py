@@ -6,6 +6,7 @@ def mask_account_card(info: str) -> str:
     """
     Обрабатывает строку с типом и номером, возвращает строку с типом и маскированным номером.
     """
+
     parts: list[str] = info.strip().split()
     if len(parts) < 2:
         raise ValueError("Некорректный формат строки. Ожидается тип и номер.")
@@ -31,5 +32,6 @@ def get_date(date_str: str) -> str:
     """
     # Парсим строку в объект datetime
     dt = datetime.fromisoformat(date_str)
+
     # Форматируем дату в нужный формат
     return dt.strftime("%d.%m.%Y")

@@ -5,7 +5,9 @@ from src.mask import get_mask_card_number, get_mask_account
 def test_get_mask_card_number():
     """Тестирование правильности маскирования номера карты."""
     assert get_mask_card_number("1234567812345678") == "1234 56** **** 5678"
-    assert get_mask_card_number("1234 5678 1234 5678") == "1234 56** **** 5678"  # С пробелами
+    assert (
+        get_mask_card_number("1234 5678 1234 5678") == "1234 56** **** 5678"
+    )  # С пробелами
 
 
 def test_get_mask_account():

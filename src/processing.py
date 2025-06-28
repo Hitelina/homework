@@ -35,6 +35,7 @@ def sort_by_date(data: List[Dict], reverse: bool = True) -> List[Dict]:
     :param reverse: Порядок сортировки (True - убывание, False - возрастание, по умолчанию True).
     :return: Новый список, отсортированный по дате.
     """
+
     return sorted(
         data, key=lambda x: datetime.fromisoformat(x["date"]), reverse=reverse
     )
@@ -43,4 +44,3 @@ def sort_by_date(data: List[Dict], reverse: bool = True) -> List[Dict]:
 if __name__ == "__main__":
     print(filter_by_state(state))
     print(sort_by_date(date))
-

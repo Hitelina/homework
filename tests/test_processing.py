@@ -3,6 +3,8 @@ from src.processing import filter_by_state, sort_by_date
 from typing import List, Dict
 
 # Фикстуры для тестовых данных
+
+
 @pytest.fixture
 def test_data():
     return [
@@ -47,4 +49,6 @@ def test_sort_by_date_descending(test_data: List[Dict]):
     """Тестирование сортировки по дате в убывающем порядке."""
     sorted_data = sort_by_date(test_data, reverse=True)
     dates = [item["date"] for item in sorted_data]
-    assert dates == sorted(dates, reverse=True)  # Проверяем, что даты отсортированы в обратном порядке
+    assert dates == sorted(
+        dates, reverse=True
+    )  # Проверяем, что даты отсортированы в обратном порядке
